@@ -1,5 +1,6 @@
-# Demo of some ideas Based AngularJS TodoMVC Example
+# Demo of Some Ideas 
+# Based AngularJS TodoMVC Example
 
-> _[TodoMVC]https://github.com/tastejs/todomvc
+_[TodoMVC](https://github.com/tastejs/todomvc)_
 
-> _[AngularJS - angularjs.org]http://angularjs.org_
+_[AngularJS - angularjs.org](http://angularjs.org)_

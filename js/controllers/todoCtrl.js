@@ -6,7 +6,7 @@
  * - retrieves and persists the model via the todoStorage service
  * - exposes the model to the template and provides event handlers
  */
-todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, todoStorage, filterFilter) {
+todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, todoStorage, filterFilter, $listProcessorSvc) {
 	var todos = $scope.todos = todoStorage.get();
 
 	$scope.newTodo = '';
@@ -20,8 +20,7 @@ todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, todoStorage,
 			todoStorage.put(todos);
 		}
 
-		//purgeXs($scope.todos);
-		//purge2and5s($scope.todos);
+		$listProcessorSvc.process(todos);
 	}, true);
 
 	if ($location.path() === '') {

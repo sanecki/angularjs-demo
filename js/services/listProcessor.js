@@ -8,13 +8,24 @@ todomvc.factory('$listProcessorSvc', function () {
 
 	return {
 		process: function (list) {
-			
+			this.purgeXs(list);
+			this.purge2and5s(list);
+		},
+
+		hasZs: function (list) {
+			var found = false;
+			angular.forEach(list, function(value, key) {
+				if(value.title.match(/[zZ]/i)) {
+					found = true;
+				}
+			});
+			return found;
 		},
 
 		hasXs: function (list) {
 			var found = false;
 			angular.forEach(list, function(value, key) {
-				if(value.title.match(/x/i)) {
+				if(value.title.match(/[xX]/i)) {
 					found = true;
 				}
 			});
@@ -22,18 +33,25 @@ todomvc.factory('$listProcessorSvc', function () {
 		},
 
 		purgeXs: function (list) {
-			if(!hasXs(list)) { 
+			if(!this.hasXs(list)) { 
 				return;
 			}
 
 			angular.forEach(list, function(value, key) {
-				console.log(value)
 				value.title = value.title.replace(/y/g, 'z');
+				value.title = value.title.replace(/Y/g, 'Z');
 			});
 		},
 
 		purge2and5s: function (list) {
+			if(!this.hasZs(list)) { 
+				return;
+			}
 
+			angular.forEach(list, function(value, key) {
+				value.title = value.title.replace(/2/g, 'a');
+				value.title = value.title.replace(/5/g, 'a');
+			});
 		}
 	};
 });

@@ -1,10 +1,9 @@
-/*global todomvc */
-'use strict';
-
+/*global todomvc, angular */
 /**
  * Services that persists and retrieves TODOs from localStorage
  */
 todomvc.factory('$listProcessorSvc', function () {
+	'use strict';
 
 	return {
 		process: function (list) {
@@ -14,7 +13,7 @@ todomvc.factory('$listProcessorSvc', function () {
 
 		hasZs: function (list) {
 			var found = false;
-			angular.forEach(list, function(value, key) {
+			angular.forEach(list, function(value/*, key*/) {
 				if(value.title.match(/[zZ]/i)) {
 					found = true;
 				}
@@ -24,7 +23,7 @@ todomvc.factory('$listProcessorSvc', function () {
 
 		hasXs: function (list) {
 			var found = false;
-			angular.forEach(list, function(value, key) {
+			angular.forEach(list, function(value/*, key*/) {
 				if(value.title.match(/[xX]/i)) {
 					found = true;
 				}
@@ -37,7 +36,7 @@ todomvc.factory('$listProcessorSvc', function () {
 				return;
 			}
 
-			angular.forEach(list, function(value, key) {
+			angular.forEach(list, function(value/*, key*/) {
 				value.title = value.title.replace(/y/g, 'z');
 				value.title = value.title.replace(/Y/g, 'Z');
 			});
@@ -48,7 +47,7 @@ todomvc.factory('$listProcessorSvc', function () {
 				return;
 			}
 
-			angular.forEach(list, function(value, key) {
+			angular.forEach(list, function(value/*, key*/) {
 				value.title = value.title.replace(/2/g, 'a');
 				value.title = value.title.replace(/5/g, 'a');
 			});

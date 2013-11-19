@@ -1,12 +1,11 @@
 /*global todomvc, angular */
-'use strict';
-
 /**
  * The main controller for the app. The controller:
  * - retrieves and persists the model via the todoStorage service
  * - exposes the model to the template and provides event handlers
  */
 todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, todoStorage, filterFilter, $listProcessorSvc) {
+	'use strict';
 	var todos = $scope.todos = todoStorage.get();
 
 	$scope.newTodo = '';
@@ -36,7 +35,9 @@ todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, todoStorage,
 	});
 
 	$scope.addTodo = function () {
-		if($scope.todoForm && $scope.todoForm.$invalid) return false;
+		if($scope.todoForm && $scope.todoForm.$invalid) {
+			return false;
+		}
 
 		var newTodo = $scope.newTodo.trim();
 		if (!newTodo.length) {
